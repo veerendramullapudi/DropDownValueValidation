@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+@Html.DropDownList("MyDropDown1", new SelectList(new[] { "select..", "value1", "value2", "value3", "value4", "value5", "value6" }), new { @id = "abc", onchange = "Alert(abc)" })
+@Html.DropDownList("MyDropDown2", new SelectList(new[] { "select..", "value1", "value2", "value3", "value4", "value5", "value6" }), new { @id = "Id1", onchange = "Alert(Id1)" })
+@Html.DropDownList("MyDropDown3", new SelectList(new[] { "select..", "value1", "value2", "value3", "value4", "value5", "value6" }), new { @id = "id2", onchange = "Alert(id2)" })
+}
+
+<script src="~/Content/jquery-1.11.2.min.js"></script>
+<script>
+    var arr = new Array();
+    function Alert(resid) {
+        for (j = 0; j <= arr.length; j++)
+        {
+            if ($(resid).val() == arr[j]) {
+                alert("error");
+                break;
+            }
+        }
+        if (j-1 == arr.length)
+            arr.push($(resid).val());
+    };
+
+</script>

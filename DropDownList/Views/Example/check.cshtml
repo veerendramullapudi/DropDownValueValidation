@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "check";
+}
+
+<h2>check</h2>
+<input id="user_name" name="user_name" onchange="UserCheck()" type="text" value="" />
+<div id="status" />
+<script>
+    function UserCheck() {
+        $("#status").html("Checking....");
+        $.post("/user/check",
+        { username: $("#user_name").val() },
+        function (data) {
+            if (data == 0) {
+                $("#status").html("Available");
+            }
+            else {
+                $("#status").html("Taken");
+            }
+        });
+    }
+
+
+</script>
